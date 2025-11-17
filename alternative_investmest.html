@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Alternative Investments | Bangko Filipino</title>
+  
+</head>
+<style>
+      
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        /* Color scheme - enhanced with more visible colors */
+        :root {
+            --primary-color: #4b0082; /* Deep royal purple */
+            --secondary-color: #5c1699; /* Lighter royal purple */
+            --accent-color: #d4af37; /* Rich metallic gold */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --background-light: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #adb5bd;
+            --transition-speed: 0.3s;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --shadow-card: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+        }
+
+        /* Logo container styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 30px;
+            width: auto;
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            border-radius: 4px;
+        }
+
+        .nav-menu > li > a:hover {
+            transform: translateY(-2px);
+        }
+
+        .dropdown-icon {
+            font-size: 9px;
+            margin-left: 5px;
+            opacity: 0.8;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: var(--shadow-card);
+            min-width: 220px;
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all var(--transition-speed);
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .has-dropdown:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+        }
+
+        .dropdown li {
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .dropdown li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 15px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown a:hover {
+            padding-left: 20px;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 30px 0 60px;
+        }
+
+        /* Page header style */
+        .page-header {
+            text-align: center;
+            padding: 80px 30px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') no-repeat center center;
+            background-size: cover;
+            color: var(--text-light);
+            margin-top: -30px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.9) 0%, rgba(92, 22, 153, 0.8) 100%);
+            opacity: 0.85;
+            z-index: -1;
+        }
+
+        .page-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Content section */
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Investment Types Cards */
+        .investment-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .investment-card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all var(--transition-speed);
+        }
+
+        .investment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .investment-icon {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .investment-content {
+            padding: 25px;
+        }
+
+        .investment-content h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .investment-content p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .investment-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .investment-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .investment-features li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 50px 0;
+            background-color: #f6f6f6;
+            margin: 40px 0;
+            border-radius: var(--border-radius);
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(75, 0, 130, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .benefit-content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            margin: 50px 0;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -50%;
+            width: 100%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+
+        .step-content h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 50px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 70px 40px;
+            text-align: center;
+            color: var(--text-light);
+            border-radius: 12px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Decorative elements */
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            z-index: 1;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.08);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            opacity: 0.95;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            min-width: 200px;
+            padding: 14px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-buttons .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.25);
+        }
+
+        .cta-buttons .btn-outline {
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            color: white;
+        }
+
+        .cta-buttons .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-buttons .btn-accent:hover {
+            background-color: #e0ba40;
+        }
+
+        .cta-buttons .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 100%);
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        footer .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            transition: all var(--transition-speed);
+            text-decoration: none;
+        }
+
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        footer .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        footer .footer-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        footer .footer-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 9px 18px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed);
+            z-index: 99;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .dropdown {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 0;
+            }
+            
+            .dropdown.active {
+                display: block;
+            }
+            
+            .investment-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .step-item:nth-child(even)::after {
+                display: none;
+            }
+
+            .step-item:nth-child(1)::after,
+            .step-item:nth-child(3)::after {
+                width: 50%;
+                right: -25%;
+            }
+
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 60px 20px;
+            }
+            
+            .page-header h2 {
+                font-size: 28px;
+            }
+            
+            .page-header p {
+                font-size: 16px;
+            }
+            
+            .investment-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .step-item::after {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+        }
+    .search-container {
+    position: relative;
+    margin-right: 15px;
+    margin-left: auto;
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    padding: 8px 35px 8px 15px;
+    font-size: 14px;
+    transition: all var(--transition-speed);
+    width: 200px;
+}
+
+#search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#search-input:focus {
+    background-color: rgba(255, 255, 255, 0.25);
+    outline: none;
+    border-color: var(--accent-color);
+    width: 220px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    transition: all 0.2s ease;
+}
+
+.search-button:hover {
+    color: var(--accent-color);
+}
+
+.search-icon {
+    font-size: 16px;
+}
+
+/* Search Results Styles */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-result-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--gray-light);
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: var(--gray-light);
+}
+
+.search-result-link {
+    display: block;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.search-result-description {
+    font-size: 12px;
+    color: var(--gray-medium);
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+/* Responsive Design for Search */
+@media (max-width: 992px) {
+    .search-container {
+        order: -1;
+        margin: 0 0 15px 0;
+        width: 100%;
+    }
+    
+    #search-input, #search-input:focus {
+        width: 100%;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+</style>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="assets/pizza.png" alt="Bangko Filipino Logo" class="logo-image">
+                <h1>Bangko Filipino</h1>
+            </div>
+            <div class="search-container">
+    <form id="search-form" onsubmit="return performSearch()">
+        <input type="text" id="search-input" placeholder="Search..." aria-label="Search">
+        <button type="submit" class="search-button" aria-label="Search">
+            <span class="search-icon">🔍</span>
+        </button>
+    </form>
+    <div id="search-results" class="search-results"></div>
+</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Services <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="personal_banking.html">Personal Banking</a></li>
+                            <li><a href="business_banking.html">Business Banking</a></li>
+                            <li><a href="loans_and_mortgages.html">Loans & Mortgages</a></li>
+                            <li><a href="investment_services.html">Investment Services</a></li>
+                            <li><a href="credit_card.html">Credit Cards</a></li>
+                            <li><a href="insurance_services.html">Insurance Services</a></li>
+                            <li><a href="wealth_management.html">Wealth Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Account <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="account_overview.html">Account Overview</a></li>
+                            <li><a href="transaction_history.html">Transaction History</a></li>
+                            <li><a href="fund_transfer.html">Fund Transfer</a></li>
+                            <li><a href="bill_payment.html">Bill Payment</a></li>
+                            <li><a href="profile_management.html">Profile Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Resources <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="security_tips.html">Security Tips</a></li>
+                            <li><a href="new_and_updates.html">News & Updates</a></li>
+                            <li><a href="promotions.html">Promotions</a></li>
+                            <li><a href="saving_calculator.html">Savings Calculator</a></li>
+                        </ul>
+                    </li>
+                     <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="highlight">Online Banking <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="index.html">Login</a></li>
+                            <li><a href="signup.html">Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h2>Alternative Investments</h2>
+                <p>Diversify your portfolio beyond traditional assets with our exclusive alternative investment options</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Explore Alternative Investments</h2>
+                <p>Alternative investments represent assets that fall outside the conventional investment categories of stocks, bonds, and cash. At Bangko Filipino, we offer access to a diverse range of alternative investment vehicles designed to enhance portfolio diversification, provide hedging against market volatility, and potentially generate higher returns.</p>
+                <p>Our team of experienced investment professionals will guide you through the selection process, ensuring that your alternative investment choices align with your financial goals, risk tolerance, and investment timeline.</p>
+            </div>
+
+            <div class="investment-types">
+                <div class="investment-card">
+                    <div class="investment-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="investment-content">
+                        <h3>Real Estate Investment Trusts (REITs)</h3>
+                        <p>Gain exposure to income-generating real estate without directly owning property.</p>
+                        <ul class="investment-features">
+                            <li><i class="fas fa-check-circle"></i> Stable income through regular dividend distributions</li>
+                            <li><i class="fas fa-check-circle"></i> Diversification across various property types</li>
+                            <li><i class="fas fa-check-circle"></i> Lower minimum investment compared to direct property ownership</li>
+                            <li><i class="fas fa-check-circle"></i> High liquidity compared to physical real estate</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <div class="investment-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="investment-content">
+                        <h3>Private Equity Funds</h3>
+                        <p>Invest in privately-held companies with high growth potential not available on public markets.</p>
+                        <ul class="investment-features">
+                            <li><i class="fas fa-check-circle"></i> Access to exclusive investment opportunities</li>
+                            <li><i class="fas fa-check-circle"></i> Potential for above-market returns</li>
+                            <li><i class="fas fa-check-circle"></i> Professional management by experienced fund managers</li>
+                            <li><i class="fas fa-check-circle"></i> Diversification across multiple private companies</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <div class="investment-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="investment-content">
+                        <h3>Commodities & Precious Metals</h3>
+                        <p>Add tangible assets to your portfolio with investments in gold, silver, agricultural products, and more.</p>
+                        <ul class="investment-features">
+                            <li><i class="fas fa-check-circle"></i> Hedge against inflation and currency fluctuations</li>
+                            <li><i class="fas fa-check-circle"></i> Low correlation with traditional financial markets</li>
+                            <li><i class="fas fa-check-circle"></i> Option for physical ownership or paper investments</li>
+                            <li><i class="fas fa-check-circle"></i> Historical store of value during economic uncertainty</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <div class="investment-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="investment-content">
+                        <h3>Hedge Funds</h3>
+                        <p>Access sophisticated investment strategies managed by elite fund managers with flexible approaches.</p>
+                        <ul class="investment-features">
+                            <li><i class="fas fa-check-circle"></i> Potential for absolute returns regardless of market direction</li>
+                            <li><i class="fas fa-check-circle"></i> Diverse strategies including long/short, global macro, and more</li>
+                            <li><i class="fas fa-check-circle"></i> Active risk management techniques</li>
+                            <li><i class="fas fa-check-circle"></i> Lower correlation with traditional market movements</li>
+                        </ul>
+                       
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <div class="investment-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="investment-content">
+    <h3>Sustainable & Impact Investments</h3>
+    <p>Generate positive social and environmental impact alongside financial returns through sustainable investments.</p>
+    <ul class="investment-features">
+        <li><i class="fas fa-check-circle"></i> Support environmentally and socially responsible companies</li>
+        <li><i class="fas fa-check-circle"></i> Access emerging trends in renewable energy and clean technology</li>
+        <li><i class="fas fa-check-circle"></i> Make a positive difference while seeking competitive returns</li>
+        <li><i class="fas fa-check-circle"></i> Alignment with UN Sustainable Development Goals</li>
+    </ul>
+  
+</div>
+</div>
+
+<div class="investment-card">
+    <div class="investment-icon">
+        <i class="fas fa-paint-brush"></i>
+    </div>
+    <div class="investment-content">
+        <h3>Art & Collectibles</h3>
+        <p>Invest in fine art, rare collectibles, and other tangible assets with appreciation potential.</p>
+        <ul class="investment-features">
+            <li><i class="fas fa-check-circle"></i> Access to curated art and collectible opportunities</li>
+            <li><i class="fas fa-check-circle"></i> Professional authentication and valuation services</li>
+            <li><i class="fas fa-check-circle"></i> Portfolio diversification through unique assets</li>
+            <li><i class="fas fa-check-circle"></i> Potential for substantial long-term appreciation</li>
+        </ul>
+      
+    </div>
+</div>
+</div>
+
+<div class="benefits-section">
+    <div class="container">
+        <h2>Benefits of Alternative Investments</h2>
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Portfolio Diversification</h3>
+                    <p>Alternative investments typically have low correlation with traditional asset classes, helping to reduce overall portfolio volatility and enhance risk-adjusted returns.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Inflation Hedge</h3>
+                    <p>Many alternative investments, particularly real assets like real estate and commodities, have historically served as effective hedges against inflation, preserving purchasing power.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Enhanced Return Potential</h3>
+                    <p>Alternative investments can offer higher return potential compared to traditional investments, especially in inefficient markets where skilled managers can identify overlooked opportunities.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-percentage"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Income Generation</h3>
+                    <p>Many alternative investments, such as REITs and certain private debt instruments, can provide steady income streams, which is particularly valuable in low-yield environments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="process-steps">
+    <div class="container">
+        <h2>Our Investment Process</h2>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Consultation</h3>
+                    <p>Meet with our investment advisors to discuss your financial goals, risk tolerance, and investment timeline.</p>
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Strategy Development</h3>
+                    <p>Receive a customized investment strategy that incorporates appropriate alternative investments for your portfolio.</p>
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Implementation</h3>
+                    <p>Our team will execute your investment plan with careful attention to timing, allocation, and tax considerations.</p>
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Ongoing Management</h3>
+                    <p>Regular portfolio reviews and adjustments to ensure your investments remain aligned with your evolving goals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the minimum investment amount for alternative investments?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Minimum investment amounts vary by product. Our REITs and commodity-based investments typically start at ₱100,000, while private equity funds and hedge funds generally require a minimum of ₱1,000,000. We also offer certain fund-of-funds products that provide access to alternative investments with lower minimums.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are alternative investments suitable for all investors?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Alternative investments typically have higher risk profiles and may not be suitable for all investors. They often work best as part of a diversified portfolio for investors with longer investment horizons and higher risk tolerance. Our advisors will help determine if these investments align with your financial situation and goals.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How liquid are alternative investments?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Liquidity varies widely among alternative investments. Publicly traded REITs offer high liquidity similar to stocks, while private equity funds typically have lockup periods of several years. We'll clearly explain the liquidity terms of each investment option before you commit your capital.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What fees are associated with alternative investments?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Fee structures for alternative investments typically include management fees (ranging from 1-2% annually) and may include performance fees (typically 10-20% of profits above a certain threshold). We prioritize transparency and will provide a comprehensive fee disclosure for any investment you consider.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How are alternative investments taxed?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Tax treatment varies by investment type and structure. Some investments may offer tax advantages, while others might have complex tax reporting requirements. Our team works with tax professionals to help you understand the potential tax implications of your investment choices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-section">
+    <div class="cta-content">
+        <h3>Ready to Diversify Your Investment Portfolio?</h3>
+        <p>Speak with one of our investment specialists to explore how alternative investments can enhance your financial strategy and help you achieve your long-term goals.</p>
+        <div class="cta-buttons">
+            <a href="invest_now.html" class="btn btn-accent">Schedule a Consultation</a>
+        </div>
+    </div>
+</div>
+</div>
+</main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="footer-nav">
+                <a href="about_us.html">About Us</a>
+                <a href="faqs.html">Faqs</a>
+                <a href="security_tips.html">Security</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="terms_and_conditions.html">Terms & Condition</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Bangko Filipino. All rights reserved.</p>
+                <p>Bangko Filipino is regulated by the Bangko Sentral ng Pilipinas.</p>
+            </div>
+        </div>
+    </footer>
+
+<div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+    // Toggle mobile menu
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+        document.querySelector('.nav-menu').classList.toggle('active');
+    });
+    
+    // Back to top button
+    window.addEventListener('scroll', function() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    document.querySelector('.back-to-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', function() {
+            item.classList.toggle('active');
+        });
+    });
+    const sitePages = [
+    {
+        title: "Home",
+        url: "home.html",
+        content: "Welcome to Bangko Filipino, your trusted financial partner."
+    },
+    {
+        title: "Personal Banking",
+        url: "personal_banking.html",
+        content: "Explore our personal banking solutions including savings accounts, checking accounts, and digital banking services."
+    },
+    {
+        title: "Business Banking",
+        url: "business_banking.html",
+        content: "Comprehensive financial tools and services designed to help your business thrive and grow."
+    },
+    {
+        title: "Loans & Mortgages",
+        url: "loans_and_mortgages.html",
+        content: "Find the right loan solution with competitive rates for personal and business needs."
+    },
+    {
+        title: "Investment Services",
+        url: "investment_services.html",
+        content: "Grow your wealth with our investment services and financial planning expertise."
+    },
+    {
+        title: "Credit Cards",
+        url: "credit_card.html",
+        content: "Discover our range of credit cards with rewards, cash back, and exclusive benefits."
+    },
+    {
+        title: "Insurance Services",
+        url: "insurance_services.html",
+        content: "Protect what matters most with our comprehensive insurance solutions."
+    },
+    {
+        title: "Wealth Management",
+        url: "wealth_management.html",
+        content: "Expert wealth management services to help you achieve your financial goals."
+    },
+    {
+        title: "Contact Us",
+        url: "contact.html",
+        content: "Get in touch with our customer service team or find your nearest branch."
+    },
+    {
+        title: "About Us",
+        url: "about_us.html",
+        content: "Get to know us."
+    },
+    {
+        title: "Account Overview",
+        url: "account_overview.html",
+        content: "Account Overview."
+    },
+    {
+        title: "Alternative Investment",
+        url: "alternative_investmest.html",
+        content: "Explore alternative investment options beyond traditional stocks and bonds."
+    },
+    {
+        title: "Application Confirmation",
+        url: "application_confirmation.html",
+        content: "Confirmation page for your submitted application."
+    },
+    {
+        title: "Apply Now",
+        url: "apply_now.html",
+        content: "Start your application process for our banking products and services."
+    },
+    {
+        title: "Balance Fund",
+        url: "balance_fund.html",
+        content: "Information about our balanced fund investment options."
+    },
+    {
+        title: "Bill Payment",
+        url: "bill_payment.html",
+        content: "Pay your bills easily through our secure online platform."
+    },
+    {
+        title: "Business Account Application",
+        url: "business_account_application.html",
+        content: "Apply for a business account with Bangko Filipino."
+    },
+    {
+        title: "Business Checking & Savings",
+        url: "business_checking_savings.html",
+        content: "Checking and savings account options for your business needs."
+    },
+    {
+        title: "Business Savings Application",
+        url: "business_savings_application.html",
+        content: "Apply for a business savings account with competitive interest rates."
+    },
+    {
+        title: "Equity Growth Funds",
+        url: "equity_growth_funds.html",
+        content: "Information about our equity growth fund investment options."
+    },
+    {
+        title: "Equity Investment",
+        url: "equity_investment.html",
+        content: "Explore equity investment opportunities for long-term growth."
+    },
+    {
+        title: "FAQs",
+        url: "faqs.html",
+        content: "Frequently asked questions about our banking products and services."
+    },
+    {
+        title: "Fixed Income Securities",
+        url: "fixed_income_securities.html",
+        content: "Invest in fixed income securities for steady returns."
+    },
+    {
+        title: "Foreign Currency Accounts",
+        url: "foreign_currency_accounts.html",
+        content: "Open and manage accounts in different currencies."
+    },
+    {
+        title: "Fund Transfer",
+        url: "fund_transfer.html",
+        content: "Transfer funds securely between accounts and to other banks."
+    },
+    {
+        title: "Home Loan",
+        url: "home_loan.html",
+        content: "Find the perfect home loan solution for your dream home."
+    },
+    {
+        title: "International Banking",
+        url: "international_banking.html",
+        content: "Banking services for international clients and transactions."
+    },
+    {
+        title: "International Wire Transfers",
+        url: "international_wire_transfers.html",
+        content: "Send money overseas quickly and securely."
+    },
+    {
+        title: "Invest Now",
+        url: "invest_now.html",
+        content: "Start your investment journey with Bangko Filipino today."
+    },
+    {
+        title: "Investment Account",
+        url: "investment_account.html",
+        content: "Open an investment account to access our full range of investment products."
+    },
+    {
+        title: "Investment Calculator",
+        url: "investment_calculator.html",
+        content: "Calculate potential returns on your investments."
+    },
+    {
+        title: "Loan Calculator",
+        url: "loan_calculator.html",
+        content: "Calculate your loan payments and interest with our easy-to-use tool."
+    },
+    {
+        title: "Login",
+        url: "login.html",
+        content: "Securely access your Bangko Filipino accounts online."
+    },
+    {
+        title: "Merchant Application",
+        url: "merchant_application.html",
+        content: "Apply for merchant services for your business."
+    },
+    {
+        title: "Merchant Services",
+        url: "merchant_services.html",
+        content: "Payment processing solutions for businesses of all sizes."
+    },
+    {
+        title: "Mutual Funds",
+        url: "mutual_funds.html",
+        content: "Diversify your portfolio with our selection of mutual funds."
+    },
+    {
+        title: "New and Updates",
+        url: "new_and_updates.html",
+        content: "Stay informed about the latest news and updates from Bangko Filipino."
+    },
+    {
+        title: "Payroll Services",
+        url: "payroll_services.html",
+        content: "Streamline your business payroll process with our comprehensive payroll services."
+    },
+    {
+        title: "Personal Loan",
+        url: "personal_loan.html",
+        content: "Get financial assistance for personal needs with our competitive personal loans."
+    },
+    {
+        title: "Portfolio Management",
+        url: "portfolio_management.html",
+        content: "Professional management of your investment portfolio for optimal returns."
+    },
+    {
+        title: "Privacy and Policy",
+        url: "privacy_and_policy.html",
+        content: "Learn about how we protect your privacy and our policies."
+    },
+    {
+        title: "Profile Management",
+        url: "profile_management.html",
+        content: "Update and manage your personal profile information."
+    },
+    {
+        title: "Promotions",
+        url: "promotions.html",
+        content: "Check out our latest promotions and special offers."
+    },
+    {
+        title: "Retirement Planning",
+        url: "retirement_planning.html",
+        content: "Plan for a secure retirement with our specialized financial solutions."
+    },
+    {
+        title: "Saving Calculator",
+        url: "saving_calculator.html",
+        content: "Calculate your potential savings growth with our savings calculator."
+    },
+    {
+        title: "Security Tips",
+        url: "security_tips.html",
+        content: "Learn how to protect your accounts and personal information."
+    },
+    {
+        title: "Sign Up",
+        url: "signup.html",
+        content: "Create your online banking account with Bangko Filipino."
+    },
+    {
+        title: "Terms and Conditions",
+        url: "terms_and_conditions.html",
+        content: "Read our terms and conditions for using Bangko Filipino services."
+    },
+    {
+        title: "Trade Finance",
+        url: "trade_finance.html",
+        content: "Financing solutions for international trade and commerce."
+    },
+    {
+        title: "Transaction History",
+        url: "transaction_history.html",
+        content: "View and manage your transaction history."
+    },
+    {
+        title: "Treasure Management",
+        url: "treasure_management.html",
+        content: "Comprehensive treasury management solutions for businesses."
+    }
+];
+// Function to perform search
+function performSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    
+    // Clear previous results
+    searchResults.innerHTML = '';
+    
+    if (searchTerm === '') {
+        searchResults.style.display = 'none';
+        return false;
+    }
+    
+    // Filter pages based on search term
+    const filteredPages = sitePages.filter(page => {
+        return page.title.toLowerCase().includes(searchTerm) || 
+               page.content.toLowerCase().includes(searchTerm);
+    });
+    
+    // Display results
+    if (filteredPages.length > 0) {
+        filteredPages.forEach(page => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            
+            resultItem.innerHTML = `
+                <a href="${page.url}" class="search-result-link">
+                    <div class="search-result-title">${highlightMatch(page.title, searchTerm)}</div>
+                    <div class="search-result-description">${highlightMatch(truncateContent(page.content), searchTerm)}</div>
+                </a>
+            `;
+            
+            searchResults.appendChild(resultItem);
+        });
+    } else {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.textContent = 'No results found';
+        searchResults.appendChild(noResults);
+    }
+    
+    searchResults.style.display = 'block';
+    return false; // Prevent form submission
+}
+
+// Function to highlight matched terms
+function highlightMatch(text, searchTerm) {
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+}
+
+// Function to truncate content for search results
+function truncateContent(content, maxLength = 100) {
+    if (content.length <= maxLength) return content;
+    return content.substring(0, maxLength) + '...';
+}
+
+// Close search results when clicking outside
+document.addEventListener('click', function(event) {
+    const searchResults = document.getElementById('search-results');
+    const searchContainer = document.querySelector('.search-container');
+    
+    if (!searchContainer.contains(event.target)) {
+        searchResults.style.display = 'none';
+    }
+});
+
+// Add focus event to search input
+document.getElementById('search-input').addEventListener('focus', function() {
+    const searchResults = document.getElementById('search-results');
+    if (this.value.trim() !== '') {
+        performSearch();
+    }
+});
+
+// Add input event to search input for real-time results
+document.getElementById('search-input').addEventListener('input', performSearch);
+</script>
+</body>
+</html>

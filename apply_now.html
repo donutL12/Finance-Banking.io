@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/apply_now.css">
+</head>
+<style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        /* Color scheme matching the parent page */
+        :root {
+            --primary-color: #4b0082; /* Deep royal purple */
+            --secondary-color: #5c1699; /* Lighter royal purple */
+            --accent-color: #d4af37; /* Rich metallic gold */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --background-light: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #adb5bd;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --transition-speed: 0.3s;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --shadow-card: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+        }
+
+        /* Logo container styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 30px;
+            width: auto;
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            border-radius: 4px;
+        }
+
+        .nav-menu > li > a:hover {
+            transform: translateY(-2px);
+        }
+
+        .dropdown-icon {
+            font-size: 9px;
+            margin-left: 5px;
+            opacity: 0.8;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: var(--shadow-card);
+            min-width: 220px;
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all var(--transition-speed);
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .has-dropdown:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+        }
+
+        .dropdown li {
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .dropdown li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 15px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown a:hover {
+            padding-left: 20px;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: var(--gray-light);
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 10px;
+            color: var(--gray-medium);
+        }
+
+        .breadcrumb-item.active {
+            color: var(--gray-medium);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/300') no-repeat center center;
+            background-size: cover;
+            color: var(--text-light);
+            border-radius: 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.9) 0%, rgba(92, 22, 153, 0.8) 100%);
+            opacity: 0.85;
+            z-index: -1;
+        }
+
+        .hero-section h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 0 0 60px;
+        }
+
+        /* Application Form */
+        .application-form-section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .application-form-section:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .application-form-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .application-form-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 60px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        /* Form Stepper */
+        .form-stepper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .form-stepper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--gray-light);
+            z-index: 1;
+        }
+
+        .stepper-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            background-color: white;
+            padding: 0 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray-light);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-medium);
+            transition: all 0.3s ease;
+        }
+
+        .stepper-step.active .step-number {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .stepper-step.active .step-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .stepper-step.completed .step-number {
+            background-color: var(--success-color);
+            color: var(--text-light);
+        }
+
+        /* Form Styles */
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-label .required {
+            color: var(--error-color);
+            margin-left: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+        }
+
+        .form-control.error {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234B0082' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 35px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-check-input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        .form-check-label {
+            font-size: 14px;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .form-buttons.center {
+            justify-content: center;
+        }
+
+        .form-buttons.right {
+            justify-content: flex-end;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-light);
+            color: var(--text-dark);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--success-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+
+        .success-message h2 {
+            color: var(--success-color);
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .application-number {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 100%);
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        footer .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            transition: all var(--transition-speed);
+        }
+
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        footer .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        footer .footer-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        footer .footer-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .dropdown {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 0;
+            }
+            
+            .dropdown.active {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .form-stepper {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .form-stepper::before {
+                display: none;
+            }
+            
+            .stepper-step {
+                flex-basis: 45%;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+            
+            .hero-section h1 {
+                font-size: 28px;
+            }
+            
+            .hero-section p {
+                font-size: 16px;
+            }
+            
+            .application-form-section {
+                padding: 30px 20px;
+            }
+            
+            .stepper-step {
+                flex-basis: 100%;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+  .search-container {
+    position: relative;
+    margin-right: 15px;
+    margin-left: auto;
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    padding: 8px 35px 8px 15px;
+    font-size: 14px;
+    transition: all var(--transition-speed);
+    width: 200px;
+}
+
+#search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#search-input:focus {
+    background-color: rgba(255, 255, 255, 0.25);
+    outline: none;
+    border-color: var(--accent-color);
+    width: 220px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    transition: all 0.2s ease;
+}
+
+.search-button:hover {
+    color: var(--accent-color);
+}
+
+.search-icon {
+    font-size: 16px;
+}
+
+/* Search Results Styles */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-result-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--gray-light);
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: var(--gray-light);
+}
+
+.search-result-link {
+    display: block;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.search-result-description {
+    font-size: 12px;
+    color: var(--gray-medium);
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+/* Responsive Design for Search */
+@media (max-width: 992px) {
+    .search-container {
+        order: -1;
+        margin: 0 0 15px 0;
+        width: 100%;
+    }
+    
+    #search-input, #search-input:focus {
+        width: 100%;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+</style>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="/api/placeholder/40/40" alt="Bangko Filipino Logo" class="logo-image">
+                <h1>Bangko Filipino</h1>
+            </div>
+            <div class="search-container">
+    <form id="search-form" onsubmit="return performSearch()">
+        <input type="text" id="search-input" placeholder="Search..." aria-label="Search">
+        <button type="submit" class="search-button" aria-label="Search">
+            <span class="search-icon">🔍</span>
+        </button>
+    </form>
+    <div id="search-results" class="search-results"></div>
+</div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Services <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="personal_banking.html">Personal Banking</a></li>
+                            <li><a href="business_banking.html">Business Banking</a></li>
+                            <li><a href="loans_and_mortgages.html">Loans & Mortgages</a></li>
+                            <li><a href="investment_services.html">Investment Services</a></li>
+                            <li><a href="credit_card.html">Credit Cards</a></li>
+                            <li><a href="insurance_services.html">Insurance Services</a></li>
+                            <li><a href="wealth_management.html">Wealth Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Account <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="account_overview.html">Account Overview</a></li>
+                            <li><a href="transaction_history.html">Transaction History</a></li>
+                            <li><a href="fund_transfer.html">Fund Transfer</a></li>
+                            <li><a href="bill_payment.html">Bill Payment</a></li>
+                            <li><a href="profile_management.html">Profile Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Resources <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="security_tips.html">Security Tips</a></li>
+                            <li><a href="new_and_updates.html">News & Updates</a></li>
+                            <li><a href="promotions.html">Promotions</a></li>
+                            <li><a href="saving_calculator.html">Savings Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="highlight">Online Banking <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown">
+                            <li><a href="index.html">Login</a></li>
+                            <li><a href="signup.html">Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+
+ <div class="hero-section">
+        <div class="container">
+            <h1>Apply for a Foreign Currency Account</h1>
+            <p>Complete the application below to start your global financial journey with Bangko Filipino</p>
+        </div>
+</div>
+
+    <main>
+        <div class="container">
+            <section class="application-form-section" id="application-form">
+                <h2>Foreign Currency Account Application</h2>
+                
+                <!-- Form Stepper -->
+                <div class="form-stepper">
+                    <div class="stepper-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Personal Information</div>
+                    </div>
+                    <div class="stepper-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Account Details</div>
+                    </div>
+                    <div class="stepper-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Financial Information</div>
+                    </div>
+                    <div class="stepper-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Review & Submit</div>
+                    </div>
+                </div>
+                
+                <!-- Application Form -->
+                <form id="currencyAccountForm">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-section active" data-section="1">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                <div class="error-message" id="firstName-error">Please enter your first name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                <div class="error-message" id="lastName-error">Please enter your last name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="form-label">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
+                                <div class="error-message" id="dateOfBirth-error">Please enter a valid date of birth</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nationality" class="form-label">Nationality <span class="required">*</span></label>
+                                <input type="text" id="nationality" name="nationality" class="form-control" required>
+                                <div class="error-message" id="nationality-error">Please enter your nationality</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                                <div class="error-message" id="email-error">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Mobile Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                                <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="address" class="form-label">Residential Address <span class="required">*</span></label>
+                                <input type="text" id="address" name="address" class="form-control" required>
+                                <div class="error-message" id="address-error">Please enter your address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city" class="form-label">City <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" class="form-control" required>
+                                <div class="error-message" id="city-error">Please enter your city</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zipCode" class="form-label">Zip/Postal Code <span class="required">*</span></label>
+                                <input type="text" id="zipCode" name="zipCode" class="form-control" required>
+                                <div class="error-message" id="zipCode-error">Please enter a valid zip code</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons right">
+                            <button type="button" class="btn btn-primary next-btn" data-next="2">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Account Details -->
+                   <div class="form-section" data-section="2">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="accountType" class="form-label">Account Type <span class="required">*</span></label>
+                                <select id="accountType" name="accountType" class="form-select" required>
+                                    <option value="">Select Account Type</option>
+                                    <option value="savings">Foreign Currency Savings</option>
+                                    <option value="checking">Foreign Currency Checking</option>
+                                    <option value="time_deposit">Time Deposit</option>
+                                    <option value="multi_currency">Multi-Currency Account</option>
+                                </select>
+                                <div class="error-message" id="accountType-error">Please select an account type</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="currency" class="form-label">Primary Currency <span class="required">*</span></label>
+                                <select id="currency" name="currency" class="form-select" required>
+                                    <option value="">Select Currency</option>
+                                    <option value="usd">US Dollar (USD)</option>
+                                    <option value="eur">Euro (EUR)</option>
+                                    <option value="gbp">British Pound (GBP)</option>
+                                    <option value="jpy">Japanese Yen (JPY)</option>
+                                    <option value="aud">Australian Dollar (AUD)</option>
+                                    <option value="cad">Canadian Dollar (CAD)</option>
+                                    <option value="chf">Swiss Franc (CHF)</option>
+                                    <option value="sgd">Singapore Dollar (SGD)</option>
+                                </select>
+                                <div class="error-message" id="currency-error">Please select a currency</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="initialDeposit" class="form-label">Initial Deposit Amount <span class="required">*</span></label>
+                                <input type="number" id="initialDeposit" name="initialDeposit" class="form-control" min="0" required>
+                                <div class="error-message" id="initialDeposit-error">Please enter a valid amount</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="depositSource" class="form-label">Source of Initial Deposit <span class="required">*</span></label>
+                                <select id="depositSource" name="depositSource" class="form-select" required>
+                                    <option value="">Select Source</option>
+                                    <option value="savings">Existing Savings</option>
+                                    <option value="salary">Salary/Income</option>
+                                    <option value="investment">Investment Returns</option>
+                                    <option value="business">Business Proceeds</option>
+                                    <option value="inheritance">Inheritance</option>
+                                    <option value="gift">Gift</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="depositSource-error">Please select a source</div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="accountPurpose" class="form-label">Purpose of Account <span class="required">*</span></label>
+                                <select id="accountPurpose" name="accountPurpose" class="form-select" required>
+                                    <option value="">Select Purpose</option>
+                                    <option value="savings">Savings</option>
+                                    <option value="travel">Travel Expenses</option>
+                                    <option value="education">Education Expenses</option>
+                                    <option value="business">Business Transactions</option>
+                                    <option value="investment">Investment</option>
+                                    <option value="retirement">Retirement Planning</option>
+                                    <option value="remittance">Remittance</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="accountPurpose-error">Please select a purpose</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="statementPreference" class="form-label">Statement Preference</label>
+                                <select id="statementPreference" name="statementPreference" class="form-select">
+                                    <option value="electronic">Electronic (Email)</option>
+                                    <option value="paper">Paper (Mail)</option>
+                                    <option value="both">Both Electronic and Paper</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountAccess" class="form-label">Account Access Methods</label>
+                                <div class="form-check">
+                                    <input type="checkbox" id="onlineBanking" name="accountAccess[]" value="online" class="form-check-input" checked>
+                                    <label for="onlineBanking" class="form-check-label">Online Banking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="mobileBanking" name="accountAccess[]" value="mobile" class="form-check-input" checked>
+                                    <label for="mobileBanking" class="form-check-label">Mobile Banking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="atmCard" name="accountAccess[]" value="atm" class="form-check-input">
+                                    <label for="atmCard" class="form-check-label">ATM/Debit Card</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="chequeBook" name="accountAccess[]" value="cheque" class="form-check-input">
+                                    <label for="chequeBook" class="form-check-label">Cheque Book (for checking accounts)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-secondary prev-btn" data-prev="1">Previous</button>
+                            <button type="button" class="btn btn-primary next-btn" data-next="3">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Financial Information -->
+                    <div class="form-section" data-section="3">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="employmentStatus" class="form-label">Employment Status <span class="required">*</span></label>
+                                <select id="employmentStatus" name="employmentStatus" class="form-select" required>
+                                    <option value="">Select Status</option>
+                                    <option value="employed">Employed</option>
+                                    <option value="self_employed">Self-Employed/Business Owner</option>
+                                    <option value="retired">Retired</option>
+                                    <option value="student">Student</option>
+                                    <option value="unemployed">Unemployed</option>
+                                </select>
+                                <div class="error-message" id="employmentStatus-error">Please select your employment status</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="occupation" class="form-label">Occupation/Job Title</label>
+                                <input type="text" id="occupation" name="occupation" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="annualIncome" class="form-label">Annual Income (in PHP) <span class="required">*</span></label>
+                                <select id="annualIncome" name="annualIncome" class="form-select" required>
+                                    <option value="">Select Income Range</option>
+                                    <option value="below_300k">Below ₱300,000</option>
+                                    <option value="300k_500k">₱300,000 - ₱500,000</option>
+                                    <option value="500k_1m">₱500,000 - ₱1,000,000</option>
+                                    <option value="1m_3m">₱1,000,000 - ₱3,000,000</option>
+                                    <option value="above_3m">Above ₱3,000,000</option>
+                                </select>
+                                <div class="error-message" id="annualIncome-error">Please select your income range</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sourceOfFunds" class="form-label">Source of Funds <span class="required">*</span></label>
+                                <select id="sourceOfFunds" name="sourceOfFunds" class="form-select" required>
+                                    <option value="">Select Source</option>
+                                    <option value="salary">Salary/Employment</option>
+                                    <option value="business">Business Income</option>
+                                    <option value="investments">Investment Returns</option>
+                                    <option value="inheritance">Inheritance</option>
+                                    <option value="pension">Pension/Retirement</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="sourceOfFunds-error">Please select your source of funds</div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="existingAccounts" class="form-label">Do you have existing accounts with Bangko Filipino?</label>
+                                <div class="form-check">
+                                    <input type="radio" id="existingYes" name="existingAccounts" value="yes" class="form-check-input">
+                                    <label for="existingYes" class="form-check-label">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="existingNo" name="existingAccounts" value="no" class="form-check-input" checked>
+                                    <label for="existingNo" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="taxResidence" class="form-label">Tax Residence <span class="required">*</span></label>
+                                <select id="taxResidence" name="taxResidence" class="form-select" required>
+                                    <option value="">Select Country of Tax Residence</option>
+                                    <option value="philippines">Philippines</option>
+                                    <option value="usa">United States</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="taxResidence-error">Please select your tax residence</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="taxIdNumber" class="form-label">Tax Identification Number (TIN) <span class="required">*</span></label>
+                                <input type="text" id="taxIdNumber" name="taxIdNumber" class="form-control" required>
+                                <div class="error-message" id="taxIdNumber-error">Please enter your TIN</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="foreignExchangeActivities" class="form-label">Expected Foreign Exchange Activities</label>
+                                <select id="foreignExchangeActivities" name="foreignExchangeActivities" class="form-select">
+                                    <option value="occasional">Occasional (1-5 transactions per month)</option>
+                                    <option value="regular">Regular (6-15 transactions per month)</option>
+                                    <option value="frequent">Frequent (16+ transactions per month)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-secondary prev-btn" data-prev="2">Previous</button>
+                            <button type="button" class="btn btn-primary next-btn" data-next="4">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-section" data-section="4">
+                        <h3>Review Your Information</h3>
+                        <p>Please review all the information you have provided before submitting your application.</p>
+                        
+                        <div class="form-group full-width">
+                            <div class="form-check">
+                                <input type="checkbox" id="termsAgree" name="termsAgree" class="form-check-input" required>
+                                <label for="termsAgree" class="form-check-label">I agree to the <a href="terms_and_conditions.html" target="_blank">Terms and Conditions</a> and <a href="privacy_policy.html" target="_blank">Privacy Policy</a> of Bangko Filipino <span class="required">*</span></label>
+                                <div class="error-message" id="termsAgree-error">You must agree to the terms and conditions</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <div class="form-check">
+                                <input type="checkbox" id="dataConsent" name="dataConsent" class="form-check-input" required>
+                                <label for="dataConsent" class="form-check-label">I consent to the collection, processing, and storage of my personal data in accordance with Bangko Filipino's <a href="data_privacy_notice.html" target="_blank">Data Privacy Notice</a> <span class="required">*</span></label>
+                                <div class="error-message" id="dataConsent-error">You must consent to data processing</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <div class="form-check">
+                                <input type="checkbox" id="infoAccuracy" name="infoAccuracy" class="form-check-input" required>
+                                <label for="infoAccuracy" class="form-check-label">I certify that all information provided is accurate and complete to the best of my knowledge <span class="required">*</span></label>
+                                <div class="error-message" id="infoAccuracy-error">You must certify the accuracy of your information</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-secondary prev-btn" data-prev="3">Previous</button>
+                            <button type="submit" class="btn btn-accent" id="submitBtn">Submit Application</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Success Message -->
+            <section class="success-message" id="success-message">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2>Application Submitted Successfully!</h2>
+                <p>Thank you for applying for a Foreign Currency Account with Bangko Filipino. Your application has been received and is now being processed.</p>
+                <p>Your application reference number is: <span class="application-number" id="application-number">FCA-2025-XXXXX</span></p>
+                <p>We will contact you within 3-5 business days regarding the status of your application.</p>
+                <div class="form-buttons center">
+                    <a href="foreign_currency_accounts.html" class="btn btn-primary">Return to Home</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="footer-nav">
+                <a href="about_us.html">About Us</a>
+                <a href="faqs.html">Faqs</a>
+                <a href="security_tips.html">Security</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="terms_and_conditions.html">Terms & Condition</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Bangko Filipino. All rights reserved.</p>
+                <p>Bangko Filipino is regulated by the Bangko Sentral ng Pilipinas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form navigation
+            const nextButtons = document.querySelectorAll('.next-btn');
+            const prevButtons = document.querySelectorAll('.prev-btn');
+            const formSections = document.querySelectorAll('.form-section');
+            const stepperSteps = document.querySelectorAll('.stepper-step');
+            
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentSection = parseInt(this.getAttribute('data-next')) - 1;
+                    const nextSection = parseInt(this.getAttribute('data-next'));
+                    
+                    // Validate current section
+                    if (validateSection(currentSection)) {
+                        // Hide current section and show next section
+                        document.querySelector(`.form-section[data-section="${currentSection}"]`).classList.remove('active');
+                        document.querySelector(`.form-section[data-section="${nextSection}"]`).classList.add('active');
+                        
+                        // Update stepper
+                        document.querySelector(`.stepper-step[data-step="${currentSection}"]`).classList.add('completed');
+                        document.querySelector(`.stepper-step[data-step="${currentSection}"]`).classList.remove('active');
+                        document.querySelector(`.stepper-step[data-step="${nextSection}"]`).classList.add('active');
+                    }
+                });
+            });
+            
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentSection = parseInt(this.getAttribute('data-prev')) + 1;
+                    const prevSection = parseInt(this.getAttribute('data-prev'));
+                    
+                    // Hide current section and show previous section
+                    document.querySelector(`.form-section[data-section="${currentSection}"]`).classList.remove('active');
+                    document.querySelector(`.form-section[data-section="${prevSection}"]`).classList.add('active');
+                    
+                    // Update stepper
+                    document.querySelector(`.stepper-step[data-step="${currentSection}"]`).classList.remove('active');
+                    document.querySelector(`.stepper-step[data-step="${prevSection}"]`).classList.add('active');
+                    document.querySelector(`.stepper-step[data-step="${prevSection}"]`).classList.remove('completed');
+                });
+            });
+            
+            // Form submission
+            const form = document.getElementById('currencyAccountForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate final section
+                if (validateSection(4)) {
+                    // Generate random application number
+                    const appNumber = 'FCA-2025-' + Math.floor(10000 + Math.random() * 90000);
+                    document.getElementById('application-number').textContent = appNumber;
+                    
+                    // Hide form and show success message
+                    document.getElementById('application-form').style.display = 'none';
+                    document.getElementById('success-message').classList.add('show');
+                    
+                    // Scroll to top of success message
+                    window.scrollTo({
+                        top: document.getElementById('success-message').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Form validation
+            function validateSection(sectionNumber) {
+                let isValid = true;
+                const section = document.querySelector(`.form-section[data-section="${sectionNumber}"]`);
+                
+                // Check required fields in current section
+                const requiredFields = section.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        showError(field);
+                        isValid = false;
+                    } else {
+                        hideError(field);
+                    }
+                });
+                
+                // Specific validations
+                if (sectionNumber === 1) {
+                    // Email validation
+                    const emailField = document.getElementById('email');
+                    if (emailField.value && !validateEmail(emailField.value)) {
+                        showError(emailField);
+                        isValid = false;
+                    }
+                    
+                    // Phone validation
+                    const phoneField = document.getElementById('phone');
+                    if (phoneField.value && !validatePhone(phoneField.value)) {
+                        showError(phoneField);
+                        isValid = false;
+                    }
+                }
+                
+                // If final section, check agreement checkboxes
+                if (sectionNumber === 4) {
+                    const agreements = ['termsAgree', 'dataConsent', 'infoAccuracy'];
+                    agreements.forEach(id => {
+                        const checkbox = document.getElementById(id);
+                        if (!checkbox.checked) {
+                            showError(checkbox);
+                            isValid = false;
+                        } else {
+                            hideError(checkbox);
+                        }
+                    });
+                }
+                
+                return isValid;
+            }
+            
+            function showError(field) {
+                field.classList.add('error');
+                const errorElement = document.getElementById(`${field.id}-error`);
+                if (errorElement) {
+                    errorElement.classList.add('show');
+                }
+            }
+            
+            function hideError(field) {
+                field.classList.remove('error');
+                const errorElement = document.getElementById(`${field.id}-error`);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            }
+            
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            function validatePhone(phone) {
+                const re = /^\+?[0-9]{10,15}$/;
+                return re.test(String(phone));
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        });
+const sitePages = [
+    {
+        title: "Home",
+        url: "home.html",
+        content: "Welcome to Bangko Filipino, your trusted financial partner."
+    },
+    {
+        title: "Personal Banking",
+        url: "personal_banking.html",
+        content: "Explore our personal banking solutions including savings accounts, checking accounts, and digital banking services."
+    },
+    {
+        title: "Business Banking",
+        url: "business_banking.html",
+        content: "Comprehensive financial tools and services designed to help your business thrive and grow."
+    },
+    {
+        title: "Loans & Mortgages",
+        url: "loans_and_mortgages.html",
+        content: "Find the right loan solution with competitive rates for personal and business needs."
+    },
+    {
+        title: "Investment Services",
+        url: "investment_services.html",
+        content: "Grow your wealth with our investment services and financial planning expertise."
+    },
+    {
+        title: "Credit Cards",
+        url: "credit_card.html",
+        content: "Discover our range of credit cards with rewards, cash back, and exclusive benefits."
+    },
+    {
+        title: "Insurance Services",
+        url: "insurance_services.html",
+        content: "Protect what matters most with our comprehensive insurance solutions."
+    },
+    {
+        title: "Wealth Management",
+        url: "wealth_management.html",
+        content: "Expert wealth management services to help you achieve your financial goals."
+    },
+    {
+        title: "Contact Us",
+        url: "contact.html",
+        content: "Get in touch with our customer service team or find your nearest branch."
+    },
+    {
+        title: "About Us",
+        url: "about_us.html",
+        content: "Get to know us."
+    },
+    {
+        title: "Account Overview",
+        url: "account_overview.html",
+        content: "Account Overview."
+    },
+    {
+        title: "Alternative Investment",
+        url: "alternative_investmest.html",
+        content: "Explore alternative investment options beyond traditional stocks and bonds."
+    },
+    {
+        title: "Application Confirmation",
+        url: "application_confirmation.html",
+        content: "Confirmation page for your submitted application."
+    },
+    {
+        title: "Apply Now",
+        url: "apply_now.html",
+        content: "Start your application process for our banking products and services."
+    },
+    {
+        title: "Balance Fund",
+        url: "balance_fund.html",
+        content: "Information about our balanced fund investment options."
+    },
+    {
+        title: "Bill Payment",
+        url: "bill_payment.html",
+        content: "Pay your bills easily through our secure online platform."
+    },
+    {
+        title: "Business Account Application",
+        url: "business_account_application.html",
+        content: "Apply for a business account with Bangko Filipino."
+    },
+    {
+        title: "Business Checking & Savings",
+        url: "business_checking_savings.html",
+        content: "Checking and savings account options for your business needs."
+    },
+    {
+        title: "Business Savings Application",
+        url: "business_savings_application.html",
+        content: "Apply for a business savings account with competitive interest rates."
+    },
+    {
+        title: "Equity Growth Funds",
+        url: "equity_growth_funds.html",
+        content: "Information about our equity growth fund investment options."
+    },
+    {
+        title: "Equity Investment",
+        url: "equity_investment.html",
+        content: "Explore equity investment opportunities for long-term growth."
+    },
+    {
+        title: "FAQs",
+        url: "faqs.html",
+        content: "Frequently asked questions about our banking products and services."
+    },
+    {
+        title: "Fixed Income Securities",
+        url: "fixed_income_securities.html",
+        content: "Invest in fixed income securities for steady returns."
+    },
+    {
+        title: "Foreign Currency Accounts",
+        url: "foreign_currency_accounts.html",
+        content: "Open and manage accounts in different currencies."
+    },
+    {
+        title: "Fund Transfer",
+        url: "fund_transfer.html",
+        content: "Transfer funds securely between accounts and to other banks."
+    },
+    {
+        title: "Home Loan",
+        url: "home_loan.html",
+        content: "Find the perfect home loan solution for your dream home."
+    },
+    {
+        title: "International Banking",
+        url: "international_banking.html",
+        content: "Banking services for international clients and transactions."
+    },
+    {
+        title: "International Wire Transfers",
+        url: "international_wire_transfers.html",
+        content: "Send money overseas quickly and securely."
+    },
+    {
+        title: "Invest Now",
+        url: "invest_now.html",
+        content: "Start your investment journey with Bangko Filipino today."
+    },
+    {
+        title: "Investment Account",
+        url: "investment_account.html",
+        content: "Open an investment account to access our full range of investment products."
+    },
+    {
+        title: "Investment Calculator",
+        url: "investment_calculator.html",
+        content: "Calculate potential returns on your investments."
+    },
+    {
+        title: "Loan Calculator",
+        url: "loan_calculator.html",
+        content: "Calculate your loan payments and interest with our easy-to-use tool."
+    },
+    {
+        title: "Login",
+        url: "login.html",
+        content: "Securely access your Bangko Filipino accounts online."
+    },
+    {
+        title: "Merchant Application",
+        url: "merchant_application.html",
+        content: "Apply for merchant services for your business."
+    },
+    {
+        title: "Merchant Services",
+        url: "merchant_services.html",
+        content: "Payment processing solutions for businesses of all sizes."
+    },
+    {
+        title: "Mutual Funds",
+        url: "mutual_funds.html",
+        content: "Diversify your portfolio with our selection of mutual funds."
+    },
+    {
+        title: "New and Updates",
+        url: "new_and_updates.html",
+        content: "Stay informed about the latest news and updates from Bangko Filipino."
+    },
+    {
+        title: "Payroll Services",
+        url: "payroll_services.html",
+        content: "Streamline your business payroll process with our comprehensive payroll services."
+    },
+    {
+        title: "Personal Loan",
+        url: "personal_loan.html",
+        content: "Get financial assistance for personal needs with our competitive personal loans."
+    },
+    {
+        title: "Portfolio Management",
+        url: "portfolio_management.html",
+        content: "Professional management of your investment portfolio for optimal returns."
+    },
+    {
+        title: "Privacy and Policy",
+        url: "privacy_and_policy.html",
+        content: "Learn about how we protect your privacy and our policies."
+    },
+    {
+        title: "Profile Management",
+        url: "profile_management.html",
+        content: "Update and manage your personal profile information."
+    },
+    {
+        title: "Promotions",
+        url: "promotions.html",
+        content: "Check out our latest promotions and special offers."
+    },
+    {
+        title: "Retirement Planning",
+        url: "retirement_planning.html",
+        content: "Plan for a secure retirement with our specialized financial solutions."
+    },
+    {
+        title: "Saving Calculator",
+        url: "saving_calculator.html",
+        content: "Calculate your potential savings growth with our savings calculator."
+    },
+    {
+        title: "Security Tips",
+        url: "security_tips.html",
+        content: "Learn how to protect your accounts and personal information."
+    },
+    {
+        title: "Sign Up",
+        url: "signup.html",
+        content: "Create your online banking account with Bangko Filipino."
+    },
+    {
+        title: "Terms and Conditions",
+        url: "terms_and_conditions.html",
+        content: "Read our terms and conditions for using Bangko Filipino services."
+    },
+    {
+        title: "Trade Finance",
+        url: "trade_finance.html",
+        content: "Financing solutions for international trade and commerce."
+    },
+    {
+        title: "Transaction History",
+        url: "transaction_history.html",
+        content: "View and manage your transaction history."
+    },
+    {
+        title: "Treasure Management",
+        url: "treasure_management.html",
+        content: "Comprehensive treasury management solutions for businesses."
+    }
+];
+// Function to perform search
+function performSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    
+    // Clear previous results
+    searchResults.innerHTML = '';
+    
+    if (searchTerm === '') {
+        searchResults.style.display = 'none';
+        return false;
+    }
+    
+    // Filter pages based on search term
+    const filteredPages = sitePages.filter(page => {
+        return page.title.toLowerCase().includes(searchTerm) || 
+               page.content.toLowerCase().includes(searchTerm);
+    });
+    
+    // Display results
+    if (filteredPages.length > 0) {
+        filteredPages.forEach(page => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            
+            resultItem.innerHTML = `
+                <a href="${page.url}" class="search-result-link">
+                    <div class="search-result-title">${highlightMatch(page.title, searchTerm)}</div>
+                    <div class="search-result-description">${highlightMatch(truncateContent(page.content), searchTerm)}</div>
+                </a>
+            `;
+            
+            searchResults.appendChild(resultItem);
+        });
+    } else {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.textContent = 'No results found';
+        searchResults.appendChild(noResults);
+    }
+    
+    searchResults.style.display = 'block';
+    return false; // Prevent form submission
+}
+
+// Function to highlight matched terms
+function highlightMatch(text, searchTerm) {
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+}
+
+// Function to truncate content for search results
+function truncateContent(content, maxLength = 100) {
+    if (content.length <= maxLength) return content;
+    return content.substring(0, maxLength) + '...';
+}
+
+// Close search results when clicking outside
+document.addEventListener('click', function(event) {
+    const searchResults = document.getElementById('search-results');
+    const searchContainer = document.querySelector('.search-container');
+    
+    if (!searchContainer.contains(event.target)) {
+        searchResults.style.display = 'none';
+    }
+});
+
+// Add focus event to search input
+document.getElementById('search-input').addEventListener('focus', function() {
+    const searchResults = document.getElementById('search-results');
+    if (this.value.trim() !== '') {
+        performSearch();
+    }
+});
+
+// Add input event to search input for real-time results
+document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+</body>
+</html>
